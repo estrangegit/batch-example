@@ -21,25 +21,24 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class BatchExampleApplicationTest {
 
-    @Autowired
-    private Job job;
+  @Autowired
+  private Job job;
 
-    @Autowired
-    private JobLauncher jobLauncher;
+  @Autowired
+  private JobLauncher jobLauncher;
 
-    @Test
-    public void nominalTest()
-            throws JobExecutionAlreadyRunningException,
-            JobRestartException,
-            JobInstanceAlreadyCompleteException,
-            JobParametersInvalidException {
+  @Test
+  public void nominalTest() throws JobExecutionAlreadyRunningException, JobRestartException,
+      JobInstanceAlreadyCompleteException, JobParametersInvalidException {
 
-        JobParameters jobParameters = new JobParametersBuilder()
-                .toJobParameters();
 
-        JobExecution execution = jobLauncher.run(job, jobParameters);
+    JobParametersBuilder builder = new JobParametersBuilder();
+    builder.addString("outputPath", "output/outputData.csv");
+    JobParameters jobParameters = builder.toJobParameters();
 
-        Assert.assertEquals(ExitStatus.COMPLETED, execution.getExitStatus());
-        System.out.println("Exit Status : " + execution.getStatus());
-    }
+    JobExecution execution = jobLauncher.run(job, jobParameters);
+
+    Assert.assertEquals(ExitStatus.COMPLETED, execution.getExitStatus());
+    System.out.println("Exit Status : " + execution.getStatus());
+  }
 }

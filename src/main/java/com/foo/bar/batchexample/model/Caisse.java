@@ -1,7 +1,6 @@
 package com.foo.bar.batchexample.model;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,48 +9,51 @@ import javax.persistence.Id;
 @Entity(name = "caisse")
 public class Caisse {
 
-    @Id
-    @GeneratedValue
-    private long id;
+  @Id
+  @GeneratedValue
+  private long id;
 
-    @Column(name = "caisse")
-    private String caisse;
+  @Column(name = "caisse")
+  private String caisse;
 
-    @Column(name = "codeservice")
-    private String codeService;
+  @Column(name = "codeservice")
+  private String codeService;
 
-    public Caisse() {
-    }
+  public Caisse() {}
 
-    public Caisse(
-            final String caisse,
-            final String codeService,
-            final LocalDateTime dateValidationDCF) {
-        super();
-        this.caisse = caisse;
-        this.codeService = codeService;
-    }
+  public Caisse(final String caisse, final String codeService,
+      final LocalDateTime dateValidationDCF) {
+    super();
+    this.caisse = caisse;
+    this.codeService = codeService;
+  }
 
-    public String getCaisse() {
-        return caisse;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public void setCaisse(
-            final String caisse) {
-        this.caisse = caisse;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public String getCodeService() {
-        return codeService;
-    }
+  public String getCaisse() {
+    return caisse;
+  }
 
-    public void setCodeService(
-            final String codeService) {
-        this.codeService = codeService;
-    }
+  public void setCaisse(final String caisse) {
+    this.caisse = caisse;
+  }
 
-    @Override
-    public String toString() {
-        return "Caisse [id=" + id + ", caisse=" + caisse + ", codeService=" + codeService + "]";
-    }
+  public String getCodeService() {
+    return codeService;
+  }
+
+  public void setCodeService(final String codeService) {
+    this.codeService = codeService;
+  }
+
+  @Override
+  public String toString() {
+    return "Caisse [id=" + id + ", caisse=" + caisse + ", codeService=" + codeService + "]";
+  }
 }
